@@ -1,0 +1,178 @@
+<section style="background-image: url(/images/hero.png);  background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center; background-size:cover; " class="hero is-medium is-primary is-bold ">
+    <div class="hero-body">
+        <div class="container">
+            <h1 style="text-align:center;" class="title">
+                getChow
+            </h1>
+            <h2 style="text-align:center;" class="subtitle">
+                Discover New Food
+            </h2>
+        </div>
+    </div>
+</section>
+
+
+
+<section style="background-color: #FAFAFA">
+    <div class="container is-fluid">
+        <h5 style="text-align:center;padding-top:1rem;" class="subtitle is-5">
+            Find the Best Restaurants Around
+        </h5>
+        <div style="text-align:center;" class="columns is-centered">
+            <div class="column is-narrow">
+                <div style="height:216px;width:174px;" class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/images/burger.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <a href="/businessdetail/1">American</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-narrow">
+                <div style="height:216px;width:174px;" class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/images/pizza.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <a href="/businessdetail/1">Pizza</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-narrow">
+                <div style="height:216px;width:174px;" class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/images/pho.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <a href="/businessdetail/1">Asian</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-narrow">
+                <div style="height:216px;width:174px;" class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/images/steak.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <a href="/businessdetail/1">Steakhouse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+
+
+<section style="background-color: #FAFAFA">
+
+
+    <div class="container is-fluid">
+        <h5 style="padding-top:1rem;" class="subtitle is-5">
+            More Restaurants:
+        </h5>
+        <ol>
+            ${data.map(category => {
+            return `
+            <li><a href="/businessdetail/${category.id}">${category.name}</a></li>
+            `
+            }).join('')}
+        </ol>
+
+    </div>
+    <!-- ${data.map(category => {
+            return `
+            <article class="tile is-child box">
+                <a href="/businessdetail/${category.id}">${category.name}</a>
+            </article>
+
+            `
+            }).join('')} -->
+    <!-- <ol>
+            ${data.map(category => {
+            return `
+            <li><a href="/businessdetail/${category.id}">${category.name}</a></li>
+            `
+            }).join('')}
+        </ol> -->
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>getChow</strong> by Jai Gokhale</a>.
+        </p>
+    </div>
+</footer>
+
+<script>
+
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        //NAVBAR SECTION
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+
+
+        }
+
+    });
+</script>

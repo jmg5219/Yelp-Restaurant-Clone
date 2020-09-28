@@ -1,0 +1,136 @@
+<div style="background-color: #FAFAFA;" class="container is-fluid">
+    <div style="padding-top:2rem;margin-bottom:1.5rem;" class="container is-fluid">
+        <h1 style="font-size: 2.5rem;" class="title">${data.map(category => {return `${category.name}`}).join('')}</h1>
+
+
+    </div>
+
+    <ul>
+        ${data.map(category => {
+        return `
+
+        <li><strong>Distance:</strong> ${category.distance}</li>
+        <li><strong>Restaurant Stars:</strong> ${category.stars}</li>
+        <li><strong>Restaurant Category:</strong> ${category.category}</li>
+        <li><strong>Popular Dish:</strong> ${category.favorite_dish}</li>
+        <li><strong>Does Takeout:</strong> ${category.takeout}</li>
+        <!-- <li><strong>Last Visited:</strong> ${category.last_visit}</li> -->
+
+
+        `
+        }).join('')}
+        <br>
+        <br>
+    </ul>
+
+
+    <div class="columns">
+        <div class="column auto">
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-6">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical">
+
+                            ${revData.map(rev => {
+                            return `
+                            <article class="tile is-child box">
+                                <ul>
+                                    <li><strong>Title:</strong> ${rev.title}
+                                    <li><strong>Review:</strong><br> ${rev.review}
+                                    <li><strong>Rating:</strong> ${rev.stars}
+                                    <li><strong>Review by:</strong> ${rev.name}
+                                </ul>
+                            </article>
+
+                            `
+                            }).join('')}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    ${!!is_logged_in ? `
+            <!-- Input Form -->
+    <div class="column is-half">
+        <form style="margin-top:16px" action="/businessdetail" method="POST">
+
+
+            <input type="hidden" value="${data.map(category => {return `${category.id}`}).join('')}" name="restauid">
+
+            <label class="label">Review Title:</label>
+            <input name="revtitle" id="titleInput" value="" class="input" type="text" placeholder="Text input">
+
+            <label class="label">Review:</label>
+            <textarea name="review" style="margin-top:16px" value="" id="reviewInput" class="textarea"
+                placeholder="e.g. Hello world"></textarea>
+
+            <label class="label">Stars (1-5):</label>
+            <input name="stars" class="input" value="" id="stars" type="number" placeholder="Text input">
+
+            <label class="label">Name:</label>
+            <input name="name" class="input" value="" id="name" type="text" placeholder="Text input">
+
+            <div class="field">
+                <button style="margin-top:16px" type="Submit" id="radButton" class="button is-primary">Submit
+                    Review</button>
+            </div>
+
+        </form>
+
+    </div>
+        ` : `
+        <a href="/users/login" class="button is-primary">Log in to submit a review</a>
+    `}
+
+
+
+
+</div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>getChow</strong> by Jai Gokhale</a>.
+        </p>
+    </div>
+</footer>
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        //NAVBAR SECTION
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+
+
+        }
+
+    });
+</script>
+
+
