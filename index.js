@@ -5,7 +5,7 @@ const http = require("http");
 const path = require("path");
 //Define Hostname (points at self) and Port
 const hostname = "127.0.0.1";
-const port = 4444;
+const port = process.env.PORT ||4444;
 // Brings in all the stuff that power Express
 const express = require("express");
 
